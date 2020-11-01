@@ -1,14 +1,17 @@
 # Django React TODO Web App
-## A Simple Web Application TODO App With **Full CRUD** Operation.
+### A Simple TODO Task manager Web Application With ***Full CRUD*** Operation.
 
-This Web Application is focusing on how to ***integrate React with Django*** Web Application
+This Web Application is focusing on how to ***integrating Django application with React***
 
-### Backend Technology used: 
+## Tech Stack:
+### Technology used for backend: 
 * Django
 * Django REST Framework
 
-### Frontend Technology used: 
+### Technology used for frontend: 
 * React Framework 
 * Reactstrap
 * Bootstrap
 
+### Database used:
+* SQLite 3

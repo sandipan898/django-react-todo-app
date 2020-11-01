@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import Modal from "./components/Modal";
 import axios from "axios";
+import Table from "reactstrap/lib/Table";
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class App extends Component {
   }
   refreshList = () => {
     axios
-      .get("http://localhost:8000/api/todos/")
+      .get("/api/todos/")
       .then(res => this.setState({ todoList: res.data }))
       .catch(err => console.log(err));
   };
@@ -56,19 +57,22 @@ class App extends Component {
       item => item.completed === viewCompleted
     );
     return newItems.map(item => (
-      <li
+      <tr
         key={item.id}
-        className="list-group-item d-flex justify-content-between align-items-center"
+        className="justify-content-between align-items-center"
       >
-        <span
+        <td
           className={`todo-title mr-2 ${
             this.state.viewCompleted ? "completed-todo" : ""
           }`}
           title={item.description}
         >
           {item.title}
-        </span>
-        <span>
+        </td>
+        <td>
+          {item.created_on}
+        </td>
+        <td>
           <button
             onClick={() => this.editItem(item)}
             className="btn btn-secondary mr-2"
@@ -82,8 +86,8 @@ class App extends Component {
           >
             Delete{" "}
           </button>
-        </span>
-      </li>
+        </td>
+      </tr>
     ));
   };
   toggle = () => {
@@ -126,9 +130,14 @@ class App extends Component {
                 </button>
               </div>
               {this.renderTabList()}
-              <ul className="list-group list-group-flush">
+              <Table>
+                <tr>
+                  <th>Title</th>
+                  <th>Time Created</th>
+                  <th>Action</th>
+                </tr>
                 {this.renderItems()}
-              </ul>
+              </Table>
             </div>
           </div>
         </div>
